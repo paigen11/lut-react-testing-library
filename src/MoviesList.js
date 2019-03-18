@@ -11,7 +11,7 @@ class MoviesList extends PureComponent {
   async componentDidMount() {
     try {
       const res = await fetch(
-        'https://api.themoviedb.org/3/discover/movie?api_key=hi&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1',
+        'https://api.themoviedb.org/3/discover/movie?api_key=fec8b5ab27b292a68294261bb21b04a5&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1',
       );
       const movies = await res.json();
       this.setState({
@@ -25,7 +25,9 @@ class MoviesList extends PureComponent {
   render() {
     return (
       <MovieGrid>
-        {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
+        {this.state.movies.map(movie => (
+          <Movie key={movie.id} movie={movie} />
+        ))}
       </MovieGrid>
     );
   }
