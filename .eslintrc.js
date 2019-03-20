@@ -24,6 +24,7 @@ module.exports = {
     'function-paren-newline': 0,
     'react/prefer-stateless-function': 0,
     'react/jsx-one-expression-per-line': 0,
+    'object-curly-newline': 0,
   },
   globals: {
     test: true,
