@@ -10,11 +10,17 @@ export default class Counter extends Component {
       count: prevState.count + 1,
     }));
   };
+
   render() {
     const { count } = this.state;
+
     return (
       <div className="hello">
-        <button data-testid="counter-button" onClick={this.increment}>
+        <button
+          type="button"
+          data-testid="counter-button"
+          onClick={this.increment}
+        >
           {count}
         </button>
       </div>

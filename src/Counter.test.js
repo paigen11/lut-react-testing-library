@@ -2,6 +2,7 @@ import React from 'react';
 import { render, cleanup, fireEvent } from 'react-testing-library';
 import Counter from './Counter';
 
+// unmounts everything from the dom and gives us a clean slate between each test run
 afterEach(cleanup);
 
 test('<Counter />', () => {
