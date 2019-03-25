@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup } from 'react-testing-library';
 // memory router is the fake router needed for react router tests
 import { MemoryRouter } from 'react-router-dom';
-import Movie from './Movie';
+import Movie, { POSTER_PATH } from './Movie';
 
 afterEach(() => {
   cleanup();
@@ -25,10 +25,15 @@ const movie = {
 };
 
 test('<Movie /> with movie', () => {
-  render(
+  const { getByTestId } = render(
     <MemoryRouter>
       <Movie movie={movie} />
     </MemoryRouter>,
   );
   expect(console.error).not.toHaveBeenCalled();
+  // use data-testid to set these test ids below
+  expect(getByTestId('movie-link').getAttribute('href')).toBe(`/${movie.id}`);
+  expect(getByTestId('movie-img').src).toBe(
+    `${POSTER_PATH}${movie.poster_path}`,
+  );
 });
