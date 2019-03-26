@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, waitForElement } from 'react-testing-library';
-import MovieDetail, { BACKDROP_PATH, POSTER_PATH } from './MovieDetail';
+import MovieDetail, { POSTER_PATH } from './MovieDetail';
 
 // sets fetch globally for entire test suite
 global.fetch = require('jest-fetch-mock');
