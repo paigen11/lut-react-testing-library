@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup } from 'react-testing-library';
 // memory router is the fake router needed for react router tests
 import { MemoryRouter } from 'react-router-dom';
-import Movie, { POSTER_PATH } from './Movie';
+import Movie, { POSTER_PATH } from '../Movie';
 
 afterEach(() => {
   cleanup();
