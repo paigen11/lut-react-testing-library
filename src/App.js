@@ -9,10 +9,15 @@ import MovieDetail from './movies/MovieDetail';
 
 const App = () => (
   <Router>
-    <div className="App">
-      <header className="App-header">
+    <div data-testid="app" className="App">
+      <header data-testid="app-header" className="App-header">
         <Link to="/">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img
+            src={logo}
+            className="App-logo"
+            alt="logo"
+            data-testid="app-logo"
+          />
         </Link>
       </header>
       <Switch>
