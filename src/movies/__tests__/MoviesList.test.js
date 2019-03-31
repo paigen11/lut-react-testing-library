@@ -55,14 +55,14 @@ test('<MoviesList />', async () => {
   expect(getAllByTestId('movie-link').length).toBe(movies.results.length);
 });
 
-test('<MoviesList /> API fail', async () => {
-  movies.results.length = 0;
-  fetch.mockResponseOnce(JSON.stringify(movies));
-  const { getByTestId } = render(
-    <MemoryRouter>
-      <MoviesList />
-    </MemoryRouter>,
-  );
+// test('<MoviesList /> API fail', async () => {
+//   movies.results.length = 0;
+//   fetch.mockResponseOnce(JSON.stringify(movies));
+//   const { getByTestId } = render(
+//     <MemoryRouter>
+//       <MoviesList />
+//     </MemoryRouter>,
+//   );
 
-  expect(getByTestId('loading')).toBeTruthy();
-});
+//   expect(getByTestId('loading')).toBeTruthy();
+// });

@@ -6,7 +6,8 @@ import {
   waitForElement,
 } from 'react-testing-library';
 import { createMemoryHistory } from 'history';
-import { Route, Router, Link, Switch, MemoryRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { POSTER_PATH } from './movies/Movie';
 
 import App from './App';
 
@@ -56,27 +57,20 @@ function renderWithRouter(
 
 test('<App /> home link', async () => {
   fetch.mockResponseOnce(JSON.stringify(movies));
-  const { getByTestId, queryByTestId } = renderWithRouter(<App />);
+  const { getByTestId, queryByTestId, getAllByTestId } = renderWithRouter(
+    <App />,
+  );
   expect(getByTestId('loading')).toBeTruthy();
 
   const leftClick = { button: 0 };
   fireEvent.click(getByTestId('app-logo'), leftClick);
   await waitForElement(() => getByTestId('movie-link'));
   expect(queryByTestId('loading')).toBeFalsy();
+  expect(getByTestId('movie-img').src).toBe(
+    `${POSTER_PATH}${movies.results[0].poster_path}`,
+  );
+  expect(getByTestId('movie-link').getAttribute('href')).toBe(
+    `/${movies.results[0].id}`,
+  );
+  expect(getAllByTestId('movie-link').length).toBe(movies.results.length);
 });
-
-// test('<App /> specific movie route', async () => {
-//   fetch.mockResponseOnce(JSON.stringify(movies));
-//   const { debug, getByTestId, queryByTestId } = renderWithRouter(<App />);
-//   expect(getByTestId('loading')).toBeTruthy();
-
-//   const leftClick = { button: 0 };
-//   fireEvent.click(getByTestId('app-logo'), leftClick);
-//   await waitForElement(() => getByTestId('movie-link'));
-//   expect(queryByTestId('loading')).toBeFalsy();
-
-//   debug();
-//   fireEvent.click(getByTestId('movie-img'), leftClick);
-//   await waitForElement(() => getByTestId('movie-title'));
-//   expect(queryByTestId('loading')).toBeFalsy();
-// });
